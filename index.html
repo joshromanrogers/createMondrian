@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> mondr.io </title>
+        <meta charset="UTF-8">
+    </head>
+    
+    <div class="container">
+        <div class="title">
+            <div class="titleItem">mondrian</div>
+        </div>
+       <div class="mondrian" onClick="removeChildren();createAndAppend();"></div>
+       <div class="contact">
+            <div class="contactItem">contact</div>
+       </div>
+    </div>
+   
+</html>
+
+<style>
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-auto-flow: dense;
+        grid-gap: 10px;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-areas:
+            "title  .           ."
+            ".      mondrian    ."
+            ".      .           contact"
+    }
+
+    .title {
+        grid-area: title;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .titleItem{
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .contact {
+        grid-area: contact;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .contactItem{
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .mondrian {
+        /* Grid within a grid */
+        grid-area: mondrian;
+        display: grid;
+        grid-gap: 5px;
+        background-color:black;
+        align-items: stretch;
+        cursor:crosshair;
+    }
+
+    .finalItem {
+        grid-column-end: span x;
+    }
+</style>
+
+
+
+<script>
+
+    function randomNumGen(max=10, min=0) {
+        return Math.ceil((Math.random() * (max-min)+min));
+    }
+
+    function randomNumGenA(max=10, min=0, amount) {
+        var arr = [];
+        for(var x = 0; x < amount; x++){
+        arr[x] = randomNumGen(this.max, this.min) + "fr";
+        }
+        arr = arr.toString().replace(/,/gi, " ");
+        return arr;
+    }
+
+    var newA = randomNumGenA(10,0,10);
+
+
+    colors = {
+        1: "blue",
+        2: "red",
+        3: "yellow",
+        4: "white",
+        5: "white",
+        6: "white",
+        7: "white",
+        8: "white",
+        9: "white",
+        10: "white",
+    }
+
+    //create 'a' array
+    var a = [];
+
+    //mondrian DOM selector
+    var mondrian = document.querySelector('.mondrian');
+
+    // build columns (x) and rows (y)
+    var x = randomNumGen(6,3);
+    var y = randomNumGen(7,2);
+
+    // multiply together to calculate number of items
+    var total = x * y;
+
+    function createAndAppend(){
+
+        for(var z = 0; z < total; z++){
+    var div = document.createElement('div');
+    mondrian.appendChild(div);
+    div.className="itemNew";
+    a.push(div);
+    }
+    document.querySelector('.mondrian').style.gridTemplateColumns = `${randomNumGenA(10,0,x)}`
+    document.querySelector('.mondrian').style.gridTemplateRows = `auto, ${randomNumGenA(10,0,y)}`
+    a.forEach(function(element) {
+        element.style.backgroundColor = `${colors[randomNumGen(10)]}`;
+        element.style.gridColumn = `auto / span ${randomNumGen(2)}`;
+        element.style.gridRow = `auto / span ${randomNumGen(2)}`;
+        })
+    }
+
+    createAndAppend();
+
+function removeChildren(){
+
+        var paras = document.getElementsByClassName('itemNew');
+        while(paras.length > 0){
+        paras[0].parentNode.removeChild(paras[0]);
+        }
+
+}
+    
+</script>
