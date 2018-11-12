@@ -10,8 +10,20 @@
             <div class="titleItem">mondrian</div>
         </div>
        <div class="mondrian" onClick="removeChildren();createAndAppend();"></div>
+       <div class="refresh">
+            <div class="slidecontainer">
+                <input type="range" min="2" max="40" value="20" class="slider" id="myRange">
+            </div>
+            <div id="demo">
+            </div>
+            <input type="button" value="create" onClick="removeChildren();createAndAppend();">
+       </div>
        <div class="contact">
-            <div class="contactItem">contact</div>
+            <div class="contactItem">
+                <a href="twitter.com/joshromanrogers">twitter</a>
+                <a href="github.com/joshromanrogers">github</a>
+            </div>
+
        </div>
     </div>
    
@@ -28,7 +40,7 @@
         grid-template-areas:
             "title  .           ."
             ".      mondrian    ."
-            ".      .           contact"
+            ".      refresh           contact"
     }
 
     .title {
@@ -38,9 +50,16 @@
         grid-template-rows: 1fr 1fr 1fr;
     }
 
-    .titleItem{
+    .titleItem {
         grid-column: 2;
         grid-row: 2;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .refresh {
+        grid-column: 2;
+        grid-row: 3;
         align-self: center;
         justify-self: center;
     }
@@ -77,6 +96,17 @@
 
 
 <script>
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    removeChildren();
+    output.innerHTML = this.value;
+    createAndAppend();
+}
 
     function randomNumGen(max=10, min=0) {
         return Math.ceil((Math.random() * (max-min)+min));
@@ -122,7 +152,7 @@
 
     function createAndAppend(){
 
-        for(var z = 0; z < total; z++){
+        for(var z = 0; z < output.innerHTML; z++){
     var div = document.createElement('div');
     mondrian.appendChild(div);
     div.className="itemNew";
