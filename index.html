@@ -9,23 +9,24 @@
         <div class="title">
             <div class="titleItem">mondrian</div>
         </div>
+        <div class="contact">
+            <div class="contactItem">
+                <a href="http://twitter.com/joshromanrogers">twitter</a>
+                <a href="http://github.com/joshromanrogers">github</a>
+            </div>
+       </div>
        <div class="mondrian" onClick="removeChildren();createAndAppend();"></div>
        <div class="refresh">
-            <div class="slidecontainer">
-                <input type="range" min="2" max="40" value="20" class="slider" id="myRange">
-            </div>
-            <div id="demo">
-            </div>
-            <input type="button" value="create" onClick="removeChildren();createAndAppend();">
-       </div>
-       <div class="contact">
-            <div class="contactItem">
-                <a href="twitter.com/joshromanrogers">twitter</a>
-                <a href="github.com/joshromanrogers">github</a>
-            </div>
-
+            <div class="refreshItem">
+                <input type="range" min="3" max="41" value="22" class="slider" id="myRange">
+                <div id="demo" style="text-align: center; margin-right: 0.1em;"></div>
+                <div id="createButton" style="text-align: center; margin-top: 0.5em;">
+                    <input type="button" value="create" onClick="removeChildren();createAndAppend();">
+                </div>
+            </div> 
        </div>
     </div>
+
    
 </html>
 
@@ -38,9 +39,9 @@
         grid-template-columns: 0.5fr 1fr 0.5fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas:
-            "title  .           ."
+            "title  .           contact"
             ".      mondrian    ."
-            ".      refresh           contact"
+            ".      refresh     ."
     }
 
     .title {
@@ -58,10 +59,18 @@
     }
 
     .refresh {
+        grid-area: refresh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .refreshItem { 
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 2;
         align-self: center;
         justify-self: center;
+        justify-items: center;
     }
 
     .contact {
@@ -71,7 +80,7 @@
         grid-template-rows: 1fr 1fr 1fr;
     }
 
-    .contactItem{
+    .contactItem {
         grid-column: 2;
         grid-row: 2;
         align-self: center;
