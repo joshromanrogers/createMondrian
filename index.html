@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title> mondr.io </title>
+        <title> ~~ mondrian art ~~ </title>
         <meta charset="UTF-8">
     </head>
     
@@ -61,7 +61,7 @@
     .refresh {
         grid-area: refresh;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
 
@@ -100,6 +100,18 @@
     .finalItem {
         grid-column-end: span x;
     }
+
+    @media only screen and (max-width: 600px) {
+    
+    .refresh {
+        visibility: hidden;
+    }
+
+    .contact, .title {
+        font-size: 1.3em;
+        line-height: 1.6;
+    }
+}
 </style>
 
 
