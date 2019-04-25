@@ -1,0 +1,147 @@
+.container {
+    display: grid;
+    height: 100vh;
+    grid-auto-flow: dense;
+    grid-gap: 10px;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-areas:
+        'title          .       contact'
+        '.   mondrian    .'
+        '.          refresh     .';
+}
+
+.title {
+    grid-area: title;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.titleItem {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    font-family: 'Monda', sans-serif;
+    color: #0f0f0f;
+
+    /* text-shadow: 0px 0px 0 rgb(208, 138, 28), 1px 1px 0 rgb(165, 123, 26), 2px 2px 0 rgb(242, 185, 100),
+        3px 3px 0 rgb(227, 167, 187), 4px 4px 0 rgb(182, 129, 63), 5px 5px 0 rgb(161, 117, 50),
+        6px 6px 0 rgb(144, 103, 39), 7px 7px 0 rgb(130, 91, 31), 8px 8px 0 rgb(120, 83, 25),
+        9px 9px 0 rgb(108, 73, 20), 10px 10px 0 rgb(93, 63, 13), 11px 11px 0 rgb(60, 54, 12),
+        12px 12px 0 rgb(63, 41, 8), 13px 13px 0; */
+    /* font-size: 6vmin;
+    position: absolute;
+    word-break: break-all; */
+}
+
+/* #paletteContainer {
+    grid-area: paletteContainer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+} */
+
+/* .palette {
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+    background-color: blueviolet;
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+} */
+
+/* #paletteContainer2 {
+    grid-area: paletteContainer2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+} */
+
+/* .colour {
+    width: 90%;
+    height: 90%;
+    background-color: aquamarine;
+    align-self: center;
+    justify-self: center;
+    justify-items: center;
+} */
+
+.refresh {
+    grid-area: refresh;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.refreshItem {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.contact {
+    grid-area: contact;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.contactItem {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    font-family: 'Monda', sans-serif;
+    color: #0f0f0f;
+}
+
+.mondrian {
+    /* Grid within a grid */
+    grid-area: mondrian;
+    display: grid;
+    grid-gap: 5px;
+    background-color: black;
+    align-items: stretch;
+    cursor: crosshair;
+    touch-action: manipulation;
+    border: 5px solid black;
+}
+
+.finalItem {
+    grid-column-end: span x;
+}
+
+@media only screen and (max-width: 600px) {
+    .refresh {
+        visibility: hidden;
+    }
+
+    .contact,
+    .title {
+        font-size: 1.3em;
+        line-height: 1.6;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width: 100px) and (max-width: 480px) {
+             
+    .title, .contact {
+       display: none;
+    }
+  }
+
+  /* iPads (portrait and landscape) ----------- */
+  /* remove side images */
+  @media only screen and (min-width: 480px) and (max-width: 800px) {
+   
+  }
+
+/*# sourceMappingURL=/style.78032849.css.map */
